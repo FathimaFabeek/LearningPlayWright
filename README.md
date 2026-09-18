@@ -62,6 +62,12 @@ Run one test file:
 npx playwright test tests/example.spec.ts
 ```
 
+Run the cart test:
+
+```bash
+npx playwright test tests/ttcart.spec.ts --headed
+```
+
 Open the HTML test report after a test run:
 
 ```bash
@@ -103,13 +109,14 @@ npx playwright test tests/generated.spec.ts --headed
 .
 ├── tests/
 │   ├── example.spec.ts
-│   └── tta-check.spec.ts
+│   ├── tta-check.spec.ts
+│   └── ttcart.spec.ts
 ├── playwright.config.ts
 ├── package.json
 └── package-lock.json
 ```
 
-The Playwright configuration runs tests from `tests/` against Chromium, Firefox, and WebKit. The HTML report is generated in `playwright-report/`.
+The Playwright configuration runs tests from `tests/` against Chromium, Firefox, and WebKit. The test files cover the Playwright documentation site, the Testing Academy login flow, and the Testing Academy cart login flow. The HTML report is generated in `playwright-report/`.
 
 ## Useful Commands
 
