@@ -1,54 +1,54 @@
 # Learning Playwright
 
-A basic [Playwright](https://playwright.dev/) project for learning browser automation with TypeScript.
+This repository is a Playwright learning workspace built with TypeScript. It contains beginner-level automation exercises, locator practice, and annotation examples to help understand browser testing with Playwright.
 
 ## Prerequisites
 
 - Node.js 20 or newer
 - npm
 
-Check your installed versions:
+Verify installation:
 
 ```bash
 node --version
 npm --version
 ```
 
-## Installation
+## Setup
 
-Install the project dependencies:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Install the Playwright browsers:
+Install the browser binaries used by Playwright:
 
 ```bash
 npx playwright install
 ```
 
-To install only Chromium:
+If needed, install only Chromium:
 
 ```bash
 npx playwright install chromium
 ```
 
-## Run Tests
+## Run tests
 
-Run all tests in headless mode:
+Run the full test suite:
 
 ```bash
 npx playwright test
 ```
 
-Run tests in a visible browser:
+Run tests in a visible browser window:
 
 ```bash
 npx playwright test --headed
 ```
 
-Run tests in one browser project:
+Run a specific project/browser:
 
 ```bash
 npx playwright test --project=chromium
@@ -56,78 +56,70 @@ npx playwright test --project=firefox
 npx playwright test --project=webkit
 ```
 
-Run one test file:
+Run a single file from the learning exercises:
 
 ```bash
-npx playwright test tests/example.spec.ts
+npx playwright test tests/01_Basics/01_example.spec.ts
+npx playwright test tests/03_chapter_LocatorCommands/01_LC.spec.ts --headed
 ```
 
-Run the cart test:
-
-```bash
-npx playwright test tests/ttcart.spec.ts --headed
-```
-
-Open the HTML test report after a test run:
+Open the HTML report after execution:
 
 ```bash
 npx playwright show-report
 ```
 
-## Generate Tests With Codegen
-
-Playwright Codegen records browser interactions and generates Playwright test code.
-
-Start Codegen with a URL:
-
-```bash
-npx playwright codegen https://playwright.dev/
-```
-
-Save generated code directly to a test file:
-
-```bash
-npx playwright codegen --target=playwright-test --output=tests/generated.spec.ts https://playwright.dev/
-```
-
-Useful Codegen options:
-
-```bash
-npx playwright codegen --device="Desktop Chrome" https://playwright.dev/
-npx playwright codegen --browser=firefox https://playwright.dev/
-```
-
-After recording a test, review the generated locators and assertions, then run it with:
-
-```bash
-npx playwright test tests/generated.spec.ts --headed
-```
-
-## Project Structure
+## Project structure
 
 ```text
 .
 ├── tests/
-│   ├── example.spec.ts
-│   ├── tta-check.spec.ts
-│   └── ttcart.spec.ts
+│   ├── 01_Basics/
+│   │   ├── 01_example.spec.ts
+│   │   ├── 02_multiple_context.ts
+│   │   ├── 03_normal_pw.ts
+│   │   ├── 04_tta-check.spec.ts
+│   │   ├── 05_ttcart.spec.ts
+│   │   ├── 06_BCP.spec.ts
+│   │   ├── 07_test_options.spec.ts
+│   │   └── 08_TA.spec.ts
+│   ├── 02_chapter_testAnnotatn/
+│   │   ├── 01_annotation.spec.ts
+│   │   └── 02_testDescribe.spec.ts
+│   └── 03_chapter_LocatorCommands/
+│       └── 01_LC.spec.ts
 ├── playwright.config.ts
 ├── package.json
-└── package-lock.json
+├── package-lock.json
+├── playwright-report/
+├── test-results/
+├── README.md
+└── .vscode/
 ```
 
-The Playwright configuration runs tests from `tests/` against Chromium, Firefox, and WebKit. The test files cover the Playwright documentation site, the Testing Academy login flow, and the Testing Academy cart login flow. The HTML report is generated in `playwright-report/`.
+## Learning focus
 
-## Useful Commands
+This project is organized into practice chapters covering:
+
+- Playwright basics and test execution
+- Test annotations and descriptions
+- Locator commands and element interaction patterns
+- Browser project configuration and test configuration options
+
+## Useful commands
 
 ```bash
-# List available Playwright CLI commands
+# Show CLI options
 npx playwright --help
 
-# Open the Playwright inspector while running a test
+# Run tests with the Playwright inspector
 npx playwright test --debug
 
 # Update Playwright to the latest version
 npm install -D @playwright/test@latest
 npx playwright install
 ```
+
+## Notes
+
+The config file sets up Chromium, Firefox, and WebKit projects and uses the HTML reporter for test output.
