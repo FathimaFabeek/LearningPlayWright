@@ -13,4 +13,6 @@ test('make appoinment', async ({ page }) => {
     await pwdField.fill("ThisIsNotAPassword");
     await LoginBTn.click();//
     await expect(page.getByRole('heading', { name: 'Make Appointment' })).toBeVisible();
+    await page.pause();
 })
+//npx playwright test tests/03_chapter_LocatorCommands/04_homework.spec.ts --project=chromium
