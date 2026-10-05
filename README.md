@@ -61,6 +61,7 @@ Run a single file from the learning exercises:
 ```bash
 npx playwright test tests/01_Basics/01_example.spec.ts
 npx playwright test tests/03_chapter_LocatorCommands/01_LC.spec.ts --headed
+npx playwright test tests/07_chapter_WebTables/03_homework.spec.ts
 ```
 
 Open the HTML report after execution:
@@ -104,7 +105,28 @@ This project is organized into practice chapters covering:
 - Playwright basics and test execution
 - Test annotations and descriptions
 - Locator commands and element interaction patterns
+- Web table interaction, including checking a checkbox's state with `toBeChecked()`
 - Browser project configuration and test configuration options
+
+## Checkbox assertions
+
+Use Playwright's web-first assertions to verify a checkbox's state. After locating
+and checking a checkbox, assert that it is checked:
+
+```ts
+const checkbox = page.locator('input[type="checkbox"]');
+await checkbox.check();
+await expect(checkbox).toBeChecked();
+```
+
+To verify that a checkbox is unchecked, use the negated assertion:
+
+```ts
+await expect(checkbox).not.toBeChecked();
+```
+
+These assertions wait for the expected state. The web table exercise demonstrates
+finding a checkbox in a matching row and asserting that it is checked.
 
 ## Useful commands
 
