@@ -48,12 +48,10 @@ Run tests in a visible browser window:
 npx playwright test --headed
 ```
 
-Run a specific project/browser:
+Run the configured browser project:
 
 ```bash
 npx playwright test --project=chromium
-npx playwright test --project=firefox
-npx playwright test --project=webkit
 ```
 
 Run a single file from the learning exercises:
@@ -64,10 +62,11 @@ npx playwright test tests/03_chapter_LocatorCommands/01_LC.spec.ts --headed
 npx playwright test tests/07_chapter_WebTables/03_homework.spec.ts
 ```
 
-Open the HTML report after execution:
+View the generated Allure report:
 
 ```bash
-npx playwright show-report
+npx allure generate allure-results --clean -o allure-report
+npx allure open allure-report
 ```
 
 ## Project structure
@@ -76,24 +75,19 @@ npx playwright show-report
 .
 ├── tests/
 │   ├── 01_Basics/
-│   │   ├── 01_example.spec.ts
-│   │   ├── 02_multiple_context.ts
-│   │   ├── 03_normal_pw.ts
-│   │   ├── 04_tta-check.spec.ts
-│   │   ├── 05_ttcart.spec.ts
-│   │   ├── 06_BCP.spec.ts
-│   │   ├── 07_test_options.spec.ts
-│   │   └── 08_TA.spec.ts
 │   ├── 02_chapter_testAnnotatn/
-│   │   ├── 01_annotation.spec.ts
-│   │   └── 02_testDescribe.spec.ts
-│   └── 03_chapter_LocatorCommands/
-│       └── 01_LC.spec.ts
+│   ├── 03_chapter_LocatorCommands/
+│   ├── 04_chapter_SessionStorage/
+│   ├── 05_Allure_Reporting/
+│   ├── 06_chapter_multiple_ElementFiler/
+│   └── 07_chapter_WebTables/
+├── template/
+│   └── template.spec.ts
+├── utils/
+│   └── CustomReporter.ts
 ├── playwright.config.ts
 ├── package.json
 ├── package-lock.json
-├── playwright-report/
-├── test-results/
 ├── README.md
 └── .vscode/
 ```
@@ -104,9 +98,10 @@ This project is organized into practice chapters covering:
 
 - Playwright basics and test execution
 - Test annotations and descriptions
-- Locator commands and element interaction patterns
-- Web table interaction, including checking a checkbox's state with `toBeChecked()`
-- Browser project configuration and test configuration options
+- Locator commands, element filtering, and session storage
+- Web table interaction, including filtering, pagination, pseudo-classes, and checkbox assertions
+- Allure and custom HTML reporting
+- Chromium project configuration and test options
 
 ## Checkbox assertions
 
@@ -144,4 +139,4 @@ npx playwright install
 
 ## Notes
 
-The config file sets up Chromium, Firefox, and WebKit projects and uses the HTML reporter for test output.
+The config file currently runs the Chromium project in a visible browser and enables the line, Allure, and custom TTA reporters. The custom HTML report is written to `tta-report/`; Allure results are written to `allure-results/`.

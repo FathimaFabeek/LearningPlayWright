@@ -1,0 +1,20 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Playwright WebTable spec",
+			"type": "shell",
+			"command": "npx playwright test tests/07_chapter_WebTables/01_webtable.spec.ts --project=chromium",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run WebTable Test",
+			"type": "shell",
+			"command": "cd /mnt/c/Users/91984/Documents/LearningPlayWright && npx playwright test tests/07_chapter_WebTables/01_webtable.spec.ts --project=chromium",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		}
+	]
+}
