@@ -1,6 +1,6 @@
 # Learning Playwright
 
-This repository is a Playwright learning workspace built with TypeScript. It contains beginner-level automation exercises, locator practice, and annotation examples to help understand browser testing with Playwright.
+This repository is a Playwright learning workspace built with TypeScript. It contains hands-on exercises for browser automation, test annotations, locators, browser storage, reporting, and common UI interactions.
 
 ## Prerequisites
 
@@ -62,12 +62,20 @@ npx playwright test tests/03_chapter_LocatorCommands/01_LC.spec.ts --headed
 npx playwright test tests/07_chapter_WebTables/03_homework.spec.ts
 ```
 
+Run all exercises in a chapter:
+
+```bash
+npx playwright test tests/15_chapter_FileDownload
+```
+
 View the generated Allure report:
 
 ```bash
 npx allure generate allure-results --clean -o allure-report
 npx allure open allure-report
 ```
+
+The custom TTA report is written to `tta-report/`. Playwright's HTML report is written to `playwright-report/`.
 
 ## Project structure
 
@@ -80,7 +88,16 @@ npx allure open allure-report
 │   ├── 04_chapter_SessionStorage/
 │   ├── 05_Allure_Reporting/
 │   ├── 06_chapter_multiple_ElementFiler/
-│   └── 07_chapter_WebTables/
+│   ├── 07_chapter_WebTables/
+│   ├── 08_chapter_WebSelectFrameDropdown/
+│   ├── 09_chapter_Iframe_Frame/
+│   ├── 10_chapter_Keyboard_Drag_Hover_Calendar/
+│   ├── 11_chapter_JS _Alerts/
+│   ├── 12_chapter_svg_handle/
+│   ├── 13_chapter_Shadow_DOM/
+│   ├── 14_chapter_File_upload/
+│   ├── 15_chapter_FileDownload/
+│   └── images/
 ├── template/
 │   └── template.spec.ts
 ├── utils/
@@ -98,10 +115,12 @@ This project is organized into practice chapters covering:
 
 - Playwright basics and test execution
 - Test annotations and descriptions
-- Locator commands, element filtering, and session storage
+- Locator commands, multiple-element filtering, and session storage
 - Web table interaction, including filtering, pagination, pseudo-classes, and checkbox assertions
-- Allure and custom HTML reporting
-- Chromium project configuration and test options
+- Dropdowns, frames and iframes, keyboard input, drag-and-drop, hover, and calendars
+- JavaScript alerts, SVG elements, Shadow DOM, and file upload/download workflows
+- Allure, Playwright HTML, and custom TTA reporting
+- Chromium project configuration and browser test options
 
 ## Checkbox assertions
 
@@ -137,6 +156,10 @@ npm install -D @playwright/test@latest
 npx playwright install
 ```
 
-## Notes
+## Configuration and generated files
 
-The config file currently runs the Chromium project in a visible browser and enables the line, Allure, and custom TTA reporters. The custom HTML report is written to `tta-report/`; Allure results are written to `allure-results/`.
+The Playwright configuration runs the Chromium project in a visible browser by default and enables the line, Allure, and custom TTA reporters. Set `headless: true` in `playwright.config.ts` to run without a visible browser.
+
+Playwright output directories (`test-results/`, `playwright-report/`), Allure results (`allure-results/`), and the TTA report (`tta-report/`) are generated while testing and are excluded from Git.
+
+Some exercises use local authentication state or environment variables. Keep `user-session.json` and `.env` local; both are ignored by Git. Create or refresh the required files locally before running exercises that depend on them, and never commit credentials or session data.

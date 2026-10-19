@@ -15,6 +15,7 @@ test('Verify QA Profile Form', async ({ page }) => {
     await page.getByTestId('profession-automation').click();
     //Technical skills
     await page.getByTestId('tool-selenium').check();
+   await expect(page.getByTestId('tool-selenium')).toBeChecked();
     await page.getByTestId('continent-asia').check();
     await page.getByTestId('continent-africa').check();
     await page.getByTestId('tab-navigation').click();
@@ -28,14 +29,6 @@ test('Verify QA Profile Form', async ({ page }) => {
    console.log(await output.textContent());
    await expect(output).toContainText('FATHIMA');
     await expect(output).toContainText('FABEEK');
-
-
-
-
-    
-
-
-
     await page.pause();
     
 
