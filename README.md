@@ -97,6 +97,9 @@ The custom TTA report is written to `tta-report/`. Playwright's HTML report is w
 │   ├── 13_chapter_Shadow_DOM/
 │   ├── 14_chapter_File_upload/
 │   ├── 15_chapter_FileDownload/
+│   ├── 19_chapter_DataDriven_Testing/
+│   │   ├── TestData/
+│   │   └── util/
 │   └── images/
 ├── template/
 │   └── template.spec.ts
@@ -121,6 +124,38 @@ This project is organized into practice chapters covering:
 - JavaScript alerts, SVG elements, Shadow DOM, and file upload/download workflows
 - Allure, Playwright HTML, and custom TTA reporting
 - Chromium project configuration and browser test options
+
+## Data-driven testing
+
+Chapter 19 demonstrates tests driven by JSON, CSV, Excel, and YAML files, MySQL
+records, and generated Faker data. The sample datasets and readers are in
+`tests/19_chapter_DataDriven_Testing/`.
+
+Run the chapter or a specific example with:
+
+```bash
+npx playwright test tests/19_chapter_DataDriven_Testing
+npx playwright test tests/19_chapter_DataDriven_Testing/11_DDT_MYSQL.spec.ts
+npx playwright test tests/19_chapter_DataDriven_Testing/12_DDT_FAKER.spec.ts
+```
+
+### MySQL example
+
+The MySQL exercise is skipped unless `MYSQL_HOST` is set. To configure it:
+
+1. Copy `.env.example` to `.env` and set the connection values for your MySQL
+   server. Playwright loads `.env` when it starts; `.env` is ignored by Git.
+2. Seed the sample database and table from the repository root:
+
+   ```bash
+   mysql -u root -p < tests/19_chapter_DataDriven_Testing/TestData/seed.sql
+   ```
+
+3. Run `npx playwright test tests/19_chapter_DataDriven_Testing/11_DDT_MYSQL.spec.ts`.
+
+The seed script creates the `playwright_ddt` database and `login_data` table.
+Set `MYSQL_DATABASE` to a different database name only if you also adjust the
+seed script accordingly.
 
 ## Checkbox assertions
 
